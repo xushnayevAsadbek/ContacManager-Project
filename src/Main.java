@@ -77,7 +77,14 @@ public class Main {
     }
 
     public static void addToArray(Contact contact){
-        if (isValidContact(contact)) {
+        if (!isValidContact(contact)) {
+            return;
+        }
+        if (isPhoneExist(contact.phone)) {
+            System.out.println("Phone number exists");
+            return;
+        }
+        
             if(contactIndex == contactArray.length){
                 Contact[] newArr = new Contact[contactArray.length * 2];
                 for(int i =0 ; i<contactArray.length ; i++){
@@ -92,7 +99,7 @@ public class Main {
             contactIndex ++ ;
         System.out.println("Contact added. ");
 
-         } 
+          
     }
 
     public static void printContactList(){
@@ -111,14 +118,24 @@ public class Main {
     public static void search(String query){
         query = query.toLowerCase();
         for(Contact contact : contactArray){
-            if(contact != null){
+            if (contact == null) {
+                continue;
+            }            
                 if(contact.name.toLowerCase().contains(query) 
                 || contact.surname.toLowerCase().contains(query) 
                 || contact.phone.contains(query)){
                  System.out.println(contact.name + " " + contact.surname + " " + contact.phone);
                 }
-            }
+            
         } 
+    }
+    public static boolean isPhoneExist(String phone){
+        for(Contact contact : contactArray){
+            if (contact != null && contact.phone.equals(phone)) {
+                return true;
+            }
+        }
+        return false;
     }
     public static void menu (){
           System.out.println("** Menu **");  
