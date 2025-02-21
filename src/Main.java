@@ -109,10 +109,13 @@ public class Main {
         return scanner.next();
     }
     public static void search(String query){
+        query = query.toLowerCase();
         for(Contact contact : contactArray){
             if(contact != null){
-                if(contact.name.contains(query) || contact.surname.contains(query) || contact.phone.contains(query)){
-                    System.out.println(contact.name + " " + contact.surname + " " + contact.phone);
+                if(contact.name.toLowerCase().contains(query) 
+                || contact.surname.toLowerCase().contains(query) 
+                || contact.phone.contains(query)){
+                 System.out.println(contact.name + " " + contact.surname + " " + contact.phone);
                 }
             }
         } 
