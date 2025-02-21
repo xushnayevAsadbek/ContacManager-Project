@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         boolean b = true;
-        Contact [] contactArray = new Contact[10];
+        Contact [] contactArray = new Contact[1];
         int contactIndex = 0;
         while (b) {
             menu();
@@ -12,6 +12,16 @@ public class Main {
                 case 1:
                     Contact contact = addContact();
                     if (isValidContact(contact)) {
+                        if(contactIndex == contactArray.length){
+                            Contact[] newArr = new Contact[contactArray.length * 2];
+                            for(int i =0 ; i<contactArray.length ; i++){
+                                newArr[i] = contactArray[i];
+                            }
+                            contactArray = newArr;
+                            System.out.println("New Array Created");
+                        }
+                        
+
                         contactArray[contactIndex] = contact;
                         contactIndex ++ ;
                     System.out.println("Contact added. ");
