@@ -14,13 +14,17 @@ public class Main {
                     if (isValidContact(contact)) {
                         contactArray[contactIndex] = contact;
                         contactIndex ++ ;
-                    System.out.println(contact.name + " " + contact.surname);
+                    System.out.println("Contact added. ");
 
                      } 
 
                     break;
                     case 2:
-                    
+                    for(Contact c : contactArray){
+                        if (c != null) {
+                            System.out.println(c.name + " " + c.surname + " " + c.phone);
+                        }
+                    }
                     break;
                     case 3:
                     
