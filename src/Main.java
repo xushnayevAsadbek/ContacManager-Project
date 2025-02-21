@@ -19,7 +19,8 @@ public class Main {
                     printContactList();
                     break;
                     case 3:
-                    
+                    String query = getQuery();
+                    search(query);
                     break;
                     case 4:
                     
@@ -100,6 +101,21 @@ public class Main {
                 System.out.println(c.name + " " + c.surname + " " + c.phone);
             }
         }
+    }
+
+    public static String getQuery(){
+        System.out.print("Enter query: ");
+        Scanner scanner =new Scanner(System.in);
+        return scanner.next();
+    }
+    public static void search(String query){
+        for(Contact contact : contactArray){
+            if(contact != null){
+                if(contact.name.contains(query) || contact.surname.contains(query) || contact.phone.contains(query)){
+                    System.out.println(contact.name + " " + contact.surname + " " + contact.phone);
+                }
+            }
+        } 
     }
     public static void menu (){
           System.out.println("** Menu **");  
